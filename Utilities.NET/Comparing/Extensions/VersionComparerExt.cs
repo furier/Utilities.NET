@@ -17,7 +17,7 @@ using System.Linq;
 
 namespace Utilities.NET.Comparing.Extensions
 {
-    /// <summary>   Version comparer extent. </summary>
+    /// <summary>   Version comparer extensions. </summary>
     /// <remarks>   Furier, 24.09.2013. </remarks>
     public static class VersionComparerExt
     {

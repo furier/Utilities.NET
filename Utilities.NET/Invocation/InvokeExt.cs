@@ -17,7 +17,7 @@ using System.ComponentModel;
 
 namespace Utilities.NET.Invocation
 {
-    /// <summary>   Invoke extent. </summary>
+    /// <summary>   Invoke extensions. </summary>
     /// <remarks>   Furier, 24.09.2013. </remarks>
     public static class InvokeExt
     {

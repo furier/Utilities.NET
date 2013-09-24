@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace Utilities.NET.Collections.Extensions
 {
-    /// <summary>   Collection extent. </summary>
+    /// <summary>   Collection extensions. </summary>
     /// <remarks>   Furier, 24.09.2013. </remarks>
     public static class CollectionExt
     {

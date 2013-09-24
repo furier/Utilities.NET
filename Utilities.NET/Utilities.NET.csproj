@@ -46,6 +46,7 @@
     <Compile Include="Mail\MailUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\ReflectionUtil.cs" />
+    <Compile Include="Security\Cryptography\CryptoUtil.cs" />
     <Compile Include="Tests\UnitTestDetector.cs" />
     <Compile Include="Comparing\VersionComparer.cs" />
   </ItemGroup>
