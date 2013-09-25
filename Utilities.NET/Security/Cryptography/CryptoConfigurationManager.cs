@@ -61,9 +61,9 @@ namespace Utilities.NET.Security.Cryptography
             get
             {
                 var encryptedString = ConfigurationManager.AppSettings[key];
-                return Decrypt(encryptedString);
+                return string.IsNullOrEmpty(encryptedString) ? string.Empty : Decrypt(encryptedString);
             }
-            set { UpdateSetting(key, Encrypt(value)); }
+            set { UpdateSetting(key, string.IsNullOrEmpty(value) ? value : Encrypt(value)); }
         }
 
         /// <summary>   Updates the setting. </summary>
@@ -89,7 +89,7 @@ namespace Utilities.NET.Security.Cryptography
         /// <param name="salt">     The salt. </param>
         public ConnectionStrings(string section, string salt) : base(section, salt) {}
 
-        /// <summary>   Indexer to get or set items within this collection using array index syntax. </summary>
+        //// <summary>   Indexer to get or set items within this collection using array index syntax. </summary>
         /// <param name="key">  The key. </param>
         /// <returns>   The indexed item. </returns>
         public override string this[string key]
@@ -97,9 +97,9 @@ namespace Utilities.NET.Security.Cryptography
             get
             {
                 var encryptedString = ConfigurationManager.ConnectionStrings[key].ConnectionString;
-                return Decrypt(encryptedString);
+                return string.IsNullOrEmpty(encryptedString) ? string.Empty : Decrypt(encryptedString);
             }
-            set { UpdateSetting(key, Encrypt(value)); }
+            set { UpdateSetting(key, string.IsNullOrEmpty(value) ? value : Encrypt(value)); }
         }
 
         /// <summary>   Updates the setting. </summary>
