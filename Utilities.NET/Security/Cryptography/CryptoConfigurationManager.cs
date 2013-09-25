@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Utilities.NET.Security.Cryptography
 {
-     /// <summary>   Manager for crypto configurations. </summary>
+    /// <summary>   Manager for crypto configurations. </summary>
     /// <remarks>   Furier, 25.09.2013. </remarks>
     public static class CryptoConfigurationManager
     {
@@ -65,6 +65,18 @@ namespace Utilities.NET.Security.Cryptography
             }
             set { UpdateSetting(key, Encrypt(value)); }
         }
+
+        /// <summary>   Updates the setting. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="key">      The key. </param>
+        /// <param name="value">    The value. </param>
+        protected override void UpdateSetting(string key, string value)
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.AppSettings.Settings[key].Value = value;
+            configuration.Save();
+            ConfigurationManager.RefreshSection(Section);
+        }
     }
 
     /// <summary>   Connection strings. </summary>
@@ -89,6 +101,18 @@ namespace Utilities.NET.Security.Cryptography
             }
             set { UpdateSetting(key, Encrypt(value)); }
         }
+
+        /// <summary>   Updates the setting. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="key">      The key. </param>
+        /// <param name="value">    The value. </param>
+        protected override void UpdateSetting(string key, string value)
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.ConnectionStrings.ConnectionStrings[key].ConnectionString = value;
+            configuration.Save();
+            ConfigurationManager.RefreshSection(Section);
+        }
     }
 
     /// <summary>   Application settings base. </summary>
@@ -102,7 +126,7 @@ namespace Utilities.NET.Security.Cryptography
         private readonly string _salt;
 
         /// <summary>   The section. </summary>
-        private readonly string _section;
+        protected readonly string Section;
 
         /// <summary>   Specialised constructor for use only by derived classes. </summary>
         /// <remarks>   Furier, 25.09.2013. </remarks>
@@ -110,7 +134,7 @@ namespace Utilities.NET.Security.Cryptography
         /// <param name="salt">     The Salt. Salt is not a password! </param>
         protected AppSettingsBase(string section, string salt)
         {
-            _section = section;
+            Section = section;
             _salt = salt;
             _entropy = Encoding.Unicode.GetBytes(_salt);
         }
@@ -148,12 +172,6 @@ namespace Utilities.NET.Security.Cryptography
         /// <remarks>   Furier, 25.09.2013. </remarks>
         /// <param name="key">      The key. </param>
         /// <param name="value">    The value. </param>
-        protected void UpdateSetting(string key, string value)
-        {
-            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            configuration.ConnectionStrings.ConnectionStrings[key].ConnectionString = value;
-            configuration.Save();
-            ConfigurationManager.RefreshSection(_section);
-        }
+        protected abstract void UpdateSetting(string key, string value);
     }
 }
