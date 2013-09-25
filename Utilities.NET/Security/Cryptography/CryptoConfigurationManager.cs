@@ -26,6 +26,13 @@ namespace Utilities.NET.Security.Cryptography
         /// <summary>   Gets or sets the application settings. </summary>
         /// <value> The application settings. </value>
         public static AppSettings AppSettings { get; set; }
+        
+        /// <summary>   Static constructor. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        static CryptoConfigurationManager()
+        {
+            AppSettings = new AppSettings();
+        }
     }
 
     /// <summary>   Application settings. </summary>
@@ -41,22 +48,36 @@ namespace Utilities.NET.Security.Cryptography
         /// <summary>   Indexer to get or set items within this collection using array index syntax. </summary>
         /// <param name="key">  The key. </param>
         /// <returns>   The indexed item. </returns>
-        public object this[string key]
+        public string this[string key]
         {
             get
             {
                 var encryptedString = ConfigurationManager.AppSettings[key];
-                var encryptedData = Convert.FromBase64String(encryptedString);
-                return ProtectedData.Unprotect(encryptedData, Entropy, DataProtectionScope.CurrentUser);
+                var encryptedData = Encoding.UTF8.GetBytes(encryptedString);
+                var decryptedData = ProtectedData.Unprotect(encryptedData, Entropy, DataProtectionScope.CurrentUser);
+                var decryptedString = Convert.ToBase64String(decryptedData);
+                return decryptedString;
             }
             set
             {
                 var decryptedString = Convert.ToString(value);
-                var decryptedData = Convert.FromBase64String(decryptedString);
+                var decryptedData = Encoding.UTF8.GetBytes(decryptedString);
                 var encryptedData = ProtectedData.Protect(decryptedData, Entropy, DataProtectionScope.CurrentUser);
                 var encryptedString = Convert.ToBase64String(encryptedData);
-                ConfigurationManager.AppSettings[key] = encryptedString;
+                UpdateSetting(key, encryptedString);
             }
+        }
+        
+        /// <summary>   Updates the setting. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="key">      The key. </param>
+        /// <param name="value">    The value. </param>
+        private static void UpdateSetting(string key, string value)
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.AppSettings.Settings[key].Value = value;
+            configuration.Save();
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }
