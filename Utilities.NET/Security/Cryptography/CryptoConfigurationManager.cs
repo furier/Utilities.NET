@@ -19,65 +19,141 @@ using System.Text;
 
 namespace Utilities.NET.Security.Cryptography
 {
-    /// <summary>   Application configuration crypto utility. </summary>
+     /// <summary>   Manager for crypto configurations. </summary>
     /// <remarks>   Furier, 25.09.2013. </remarks>
     public static class CryptoConfigurationManager
     {
-        /// <summary>   Gets or sets the application settings. </summary>
-        /// <value> The application settings. </value>
-        public static AppSettings AppSettings { get; set; }
-        
+        /// <summary>  The Salt. Salt is not a password! </summary>
+        private const string Salt = "!%¤%/¤#SF@//%SDV##¤%/)ASD!";
+
         /// <summary>   Static constructor. </summary>
         /// <remarks>   Furier, 25.09.2013. </remarks>
         static CryptoConfigurationManager()
         {
-            AppSettings = new AppSettings();
+            AppSettings = new AppSettings("appSettings", Salt);
+            ConnectionStrings = new ConnectionStrings("connectionStrings", Salt);
         }
+
+        /// <summary>   Gets or sets the application settings. </summary>
+        /// <value> The application settings. </value>
+        public static AppSettings AppSettings { get; set; }
+
+        /// <summary>   Gets or sets the connection strings. </summary>
+        /// <value> The connection strings. </value>
+        public static ConnectionStrings ConnectionStrings { get; set; }
     }
 
     /// <summary>   Application settings. </summary>
     /// <remarks>   Furier, 25.09.2013. </remarks>
-    public sealed class AppSettings
+    public class AppSettings : AppSettingsBase
     {
-        /// <summary>   The Salt. Salt is not a password! </summary>
-        private const string Salt = "!%¤%/¤#SF@//%SDV##¤%/)ASD!";
-
-        /// <summary>   The entropy. </summary>
-        private static readonly byte[] Entropy = Encoding.Unicode.GetBytes(Salt);
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="section">  The section. </param>
+        /// <param name="salt">     The salt. </param>
+        public AppSettings(string section, string salt) : base(section, salt) {}
 
         /// <summary>   Indexer to get or set items within this collection using array index syntax. </summary>
         /// <param name="key">  The key. </param>
         /// <returns>   The indexed item. </returns>
-        public string this[string key]
+        public override string this[string key]
         {
             get
             {
                 var encryptedString = ConfigurationManager.AppSettings[key];
-                var encryptedData = Encoding.UTF8.GetBytes(encryptedString);
-                var decryptedData = ProtectedData.Unprotect(encryptedData, Entropy, DataProtectionScope.CurrentUser);
-                var decryptedString = Convert.ToBase64String(decryptedData);
-                return decryptedString;
+                return Decrypt(encryptedString);
             }
-            set
-            {
-                var decryptedString = Convert.ToString(value);
-                var decryptedData = Encoding.UTF8.GetBytes(decryptedString);
-                var encryptedData = ProtectedData.Protect(decryptedData, Entropy, DataProtectionScope.CurrentUser);
-                var encryptedString = Convert.ToBase64String(encryptedData);
-                UpdateSetting(key, encryptedString);
-            }
+            set { UpdateSetting(key, Encrypt(value)); }
         }
-        
+    }
+
+    /// <summary>   Connection strings. </summary>
+    /// <remarks>   Furier, 25.09.2013. </remarks>
+    public class ConnectionStrings : AppSettingsBase
+    {
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="section">  The section. </param>
+        /// <param name="salt">     The salt. </param>
+        public ConnectionStrings(string section, string salt) : base(section, salt) {}
+
+        /// <summary>   Indexer to get or set items within this collection using array index syntax. </summary>
+        /// <param name="key">  The key. </param>
+        /// <returns>   The indexed item. </returns>
+        public override string this[string key]
+        {
+            get
+            {
+                var encryptedString = ConfigurationManager.ConnectionStrings[key].ConnectionString;
+                return Decrypt(encryptedString);
+            }
+            set { UpdateSetting(key, Encrypt(value)); }
+        }
+    }
+
+    /// <summary>   Application settings base. </summary>
+    /// <remarks>   Furier, 25.09.2013. </remarks>
+    public abstract class AppSettingsBase
+    {
+        /// <summary>   The entropy. </summary>
+        private readonly byte[] _entropy;
+
+        /// <summary>   The Salt. Salt is not a password! </summary>
+        private readonly string _salt;
+
+        /// <summary>   The section. </summary>
+        private readonly string _section;
+
+        /// <summary>   Specialised constructor for use only by derived classes. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="section">  The section. </param>
+        /// <param name="salt">     The Salt. Salt is not a password! </param>
+        protected AppSettingsBase(string section, string salt)
+        {
+            _section = section;
+            _salt = salt;
+            _entropy = Encoding.Unicode.GetBytes(_salt);
+        }
+
+        /// <summary>   Indexer to get or set items within this collection using array index syntax. </summary>
+        /// <param name="key">  The key. </param>
+        /// <returns>   The indexed item. </returns>
+        public abstract string this[string key] { get; set; }
+
+        /// <summary>   Decrypts. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="encryptedString">  The encrypted string. </param>
+        /// <returns>   . </returns>
+        protected string Decrypt(string encryptedString)
+        {
+            var encryptedData = Encoding.UTF8.GetBytes(encryptedString);
+            var decryptedData = ProtectedData.Unprotect(encryptedData, _entropy, DataProtectionScope.CurrentUser);
+            var decryptedString = Convert.ToBase64String(decryptedData);
+            return decryptedString;
+        }
+
+        /// <summary>   Encrypts. </summary>
+        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <param name="decryptedString">  The decrypted string. </param>
+        /// <returns>   . </returns>
+        protected string Encrypt(string decryptedString)
+        {
+            var decryptedData = Encoding.UTF8.GetBytes(decryptedString);
+            var encryptedData = ProtectedData.Protect(decryptedData, _entropy, DataProtectionScope.CurrentUser);
+            var encryptedString = Convert.ToBase64String(encryptedData);
+            return encryptedString;
+        }
+
         /// <summary>   Updates the setting. </summary>
         /// <remarks>   Furier, 25.09.2013. </remarks>
         /// <param name="key">      The key. </param>
         /// <param name="value">    The value. </param>
-        private static void UpdateSetting(string key, string value)
+        protected void UpdateSetting(string key, string value)
         {
             var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            configuration.AppSettings.Settings[key].Value = value;
+            configuration.ConnectionStrings.ConnectionStrings[key].ConnectionString = value;
             configuration.Save();
-            ConfigurationManager.RefreshSection("appSettings");
+            ConfigurationManager.RefreshSection(_section);
         }
     }
 }
