@@ -3,7 +3,7 @@
 // //////////////////////////////////////////////////////
 // /// File: CollectionExt.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-24 20:22
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -17,11 +17,11 @@ using System.Collections.Generic;
 namespace Utilities.NET.Collections.Extensions
 {
     /// <summary>   Collection extensions. </summary>
-    /// <remarks>   Furier, 24.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
     public static class CollectionExt
     {
         /// <summary>   An ICollection extension method that determine if two Collections are equal. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <param name="collectionA">  The collection a to act on. </param>
         /// <param name="collectionB">  The collection b to compare with. </param>
         /// <returns>   true if equal, false if not. </returns>

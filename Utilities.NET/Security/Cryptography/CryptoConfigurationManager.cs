@@ -1,9 +1,9 @@
 ﻿#region File Header
 
 // //////////////////////////////////////////////////////
-// /// File: AppConfigCryptoUtil.cs
+// /// File: CryptoConfigurationManager.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-25 00:07
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -20,14 +20,14 @@ using System.Text;
 namespace Utilities.NET.Security.Cryptography
 {
     /// <summary>   Manager for crypto configurations. </summary>
-    /// <remarks>   Furier, 25.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
     public static class CryptoConfigurationManager
     {
         /// <summary>  The Salt. Salt is not a password! </summary>
         private const string Salt = "!%¤%/¤#SF@//%SDV##¤%/)ASD!";
 
         /// <summary>   Static constructor. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         static CryptoConfigurationManager()
         {
             AppSettings = new AppSettings("appSettings", Salt);
@@ -44,11 +44,11 @@ namespace Utilities.NET.Security.Cryptography
     }
 
     /// <summary>   Application settings. </summary>
-    /// <remarks>   Furier, 25.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
     public class AppSettings : AppSettingsBase
     {
         /// <summary>   Constructor. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="section">  The section. </param>
         /// <param name="salt">     The salt. </param>
         public AppSettings(string section, string salt) : base(section, salt) {}
@@ -67,7 +67,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Updates the setting. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="key">      The key. </param>
         /// <param name="value">    The value. </param>
         protected override void UpdateSetting(string key, string value)
@@ -80,11 +80,11 @@ namespace Utilities.NET.Security.Cryptography
     }
 
     /// <summary>   Connection strings. </summary>
-    /// <remarks>   Furier, 25.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
     public class ConnectionStrings : AppSettingsBase
     {
         /// <summary>   Constructor. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="section">  The section. </param>
         /// <param name="salt">     The salt. </param>
         public ConnectionStrings(string section, string salt) : base(section, salt) {}
@@ -103,7 +103,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Updates the setting. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="key">      The key. </param>
         /// <param name="value">    The value. </param>
         protected override void UpdateSetting(string key, string value)
@@ -116,20 +116,20 @@ namespace Utilities.NET.Security.Cryptography
     }
 
     /// <summary>   Application settings base. </summary>
-    /// <remarks>   Furier, 25.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
     public abstract class AppSettingsBase
     {
+        /// <summary>   The section. </summary>
+        protected readonly string Section;
+
         /// <summary>   The entropy. </summary>
         private readonly byte[] _entropy;
 
         /// <summary>   The Salt. Salt is not a password! </summary>
         private readonly string _salt;
 
-        /// <summary>   The section. </summary>
-        protected readonly string Section;
-
         /// <summary>   Specialised constructor for use only by derived classes. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="section">  The section. </param>
         /// <param name="salt">     The Salt. Salt is not a password! </param>
         protected AppSettingsBase(string section, string salt)
@@ -145,7 +145,7 @@ namespace Utilities.NET.Security.Cryptography
         public abstract string this[string key] { get; set; }
 
         /// <summary>   Decrypts. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="encryptedString">  The encrypted string. </param>
         /// <returns>   . </returns>
         protected string Decrypt(string encryptedString)
@@ -157,7 +157,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Encrypts. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="decryptedString">  The decrypted string. </param>
         /// <returns>   . </returns>
         protected string Encrypt(string decryptedString)
@@ -169,7 +169,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Updates the setting. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <param name="key">      The key. </param>
         /// <param name="value">    The value. </param>
         protected abstract void UpdateSetting(string key, string value);

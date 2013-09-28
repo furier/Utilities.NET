@@ -3,7 +3,7 @@
 // //////////////////////////////////////////////////////
 // /// File: CryptoUtil.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-25 00:19
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -30,11 +30,11 @@ using System.Text;
 namespace Utilities.NET.Security.Cryptography
 {
     /// <summary>   Cryptography utility. </summary>
-    /// <remarks>   Furier, 24.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
     public class CryptoUtil
     {
         /// <summary>   Encrypts a string using a password and salt. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <typeparam name="T">    Generic type parameter. </typeparam>
         /// <param name="text">     The string to encrypt. </param>
         /// <param name="password"> Password or Key to be used with the encryption. </param>
@@ -55,7 +55,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Encrypt in memory data. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <exception cref="ArgumentException">        Thrown when one or more arguments have unsupported or illegal values. </exception>
         /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are null. </exception>
         /// <param name="buffer">   The buffer. </param>
@@ -69,7 +69,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Encrypt data to stream. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <exception cref="ArgumentException">        Thrown when one or more arguments have unsupported or illegal values. </exception>
         /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are null. </exception>
         /// <param name="buffer">   The buffer. </param>
@@ -98,7 +98,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Decrypts a string using a password and salt. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <typeparam name="T">    Generic type parameter. </typeparam>
         /// <param name="text">     The string to decrypt. </param>
         /// <param name="password"> Password or Key to be used with the decryption. </param>
@@ -115,7 +115,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Decrypt in memory data. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <exception cref="ArgumentException">        Thrown when one or more arguments have unsupported or illegal values. </exception>
         /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are null. </exception>
         /// <param name="buffer">   The buffer. </param>
@@ -129,7 +129,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Decrypt data from stream. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are null. </exception>
         /// <exception cref="ArgumentException">        Thrown when one or more arguments have unsupported or illegal values. </exception>
         /// <exception cref="IOException">              Thrown when an IO failure occurred. </exception>
@@ -158,7 +158,7 @@ namespace Utilities.NET.Security.Cryptography
         }
 
         /// <summary>   Creates random entropy. </summary>
-        /// <remarks>   Furier, 25.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 25.09.2013. </remarks>
         /// <returns>   A new array of byte. </returns>
         public static byte[] CreateRandomEntropy()
         {

@@ -3,7 +3,7 @@
 // //////////////////////////////////////////////////////
 // /// File: MailUtil.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-24 20:26
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -17,7 +17,7 @@ using System.Net.Mail;
 namespace Utilities.NET.Mail
 {
     /// <summary>   Mail utility. </summary>
-    /// <remarks>   Furier, 24.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
     public static class MailUtil
     {
         /// <summary>   The port. </summary>
@@ -36,7 +36,7 @@ namespace Utilities.NET.Mail
         public static bool EnableSSL = false;
 
         /// <summary>   Sends a mail. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <param name="from">     Source for the. </param>
         /// <param name="to">       to. </param>
         /// <param name="subject">  The subject. </param>

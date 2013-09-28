@@ -1,10 +1,24 @@
-﻿using Utilities.NET.Demos.Security.Cryptography;
+﻿#region File Header
+
+// //////////////////////////////////////////////////////
+// /// File: Program.cs
+// /// Author: Sander Struijk
+// /// Date: 2013-09-28 15:07
+// //////////////////////////////////////////////////////
+
+#endregion
+
+#region Using Directives
+
+using Utilities.NET.Demos.Security.Cryptography;
+
+#endregion
 
 namespace Utilities.NET.Demos
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             MemoryProtectionDemo.Run();
         }

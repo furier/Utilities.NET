@@ -3,7 +3,7 @@
 // //////////////////////////////////////////////////////
 // /// File: VersionComparer.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-24 20:16
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -23,7 +23,7 @@ namespace Utilities.NET.Comparing
     public class VersionComparer : IComparer<string>
     {
         /// <summary>   Compares two version string objects to determine their relative ordering. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <param name="x">    String to be compared. e.g. "2.1.1.3" </param>
         /// <param name="y">    String to be compared. e.g. "2.2.6.0" </param>
         /// <returns>   Negative if 'x' is less than 'y', 0 if they are equal, or positive if it is greater. </returns>

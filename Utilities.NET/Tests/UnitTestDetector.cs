@@ -3,7 +3,7 @@
 // //////////////////////////////////////////////////////
 // /// File: UnitTestDetector.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-24 20:04
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -18,11 +18,11 @@ using System.Linq;
 namespace Utilities.NET.Tests
 {
     /// <summary>   Detects if we are running inside a unit test. </summary>
-    /// <remarks>   Furier, 24.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
     public static class UnitTestDetector
     {
         /// <summary>   Static constructor. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         static UnitTestDetector()
         {
             const string testAssemblyName = "Microsoft.VisualStudio.QualityTools.UnitTestFramework";

@@ -3,7 +3,7 @@
 // //////////////////////////////////////////////////////
 // /// File: InvokeExt.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-24 21:15
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -18,11 +18,11 @@ using System.ComponentModel;
 namespace Utilities.NET.Invocation
 {
     /// <summary>   Invoke extensions. </summary>
-    /// <remarks>   Furier, 24.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
     public static class InvokeExt
     {
         /// <summary>   A T extension method that executes the ex on a different thread, and waits for the result. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <typeparam name="T">    Generic type parameter. </typeparam>
         /// <param name="this">     The @this to act on. </param>
         /// <param name="action">   The action. </param>

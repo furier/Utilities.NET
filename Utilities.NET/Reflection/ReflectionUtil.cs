@@ -3,7 +3,7 @@
 // //////////////////////////////////////////////////////
 // /// File: ReflectionUtil.cs
 // /// Author: Sander Struijk
-// /// Date: 2013-09-24 20:31
+// /// Date: 2013-09-28 15:07
 // //////////////////////////////////////////////////////
 
 #endregion
@@ -21,11 +21,11 @@ using System.Reflection;
 namespace Utilities.NET.Reflection
 {
     /// <summary>   Reflection utility. </summary>
-    /// <remarks>   Furier, 24.09.2013. </remarks>
+    /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
     public static class ReflectionUtil
     {
         /// <summary>   Returns an object collection of type T of none public fields a target object may have. </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <typeparam name="T">    . </typeparam>
         /// <param name="target">   . </param>
         /// <returns>   The found all objects&lt; t&gt; </returns>
@@ -51,11 +51,10 @@ namespace Utilities.NET.Reflection
         // Console output:
         //     
         // Not Completed.
-
         /// <summary>
         ///     
         /// </summary>
-        /// <remarks>   Furier, 24.09.2013. </remarks>
+        /// <remarks>   Sander Struijk, 24.09.2013. </remarks>
         /// <param name="enumerationValue"> . </param>
         /// <returns>   Returns the value of a potensial Description Attribute on the enum value. </returns>
         public static string GetDescription(this Enum enumerationValue)
