@@ -32,14 +32,16 @@ namespace Utilities.NET.Security.Cryptography
         /// <returns>   . </returns>
         public static string Encrypt<T>(string text, string password, string salt) where T : SymmetricAlgorithm, new()
         {
-            DeriveBytes rgb = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(salt));
+            DeriveBytes rgb = new Rfc2898DeriveBytes(password, Convert.FromBase64String(salt));
             SymmetricAlgorithm algorithm = new T();
             var rgbKey = rgb.GetBytes(algorithm.KeySize >> 3);
             var rgbIV = rgb.GetBytes(algorithm.BlockSize >> 3);
             var transform = algorithm.CreateEncryptor(rgbKey, rgbIV);
             using (var buffer = new MemoryStream())
             {
-                using (var stream = new CryptoStream(buffer, transform, CryptoStreamMode.Write)) using (var writer = new StreamWriter(stream, Encoding.UTF8)) writer.Write(text);
+                using (var stream = new CryptoStream(buffer, transform, CryptoStreamMode.Write))
+                    using (var writer = new StreamWriter(stream, Encoding.UTF8))
+                        writer.Write(text);
                 return Convert.ToBase64String(buffer.ToArray());
             }
         }
@@ -96,12 +98,15 @@ namespace Utilities.NET.Security.Cryptography
         /// <returns>   . </returns>
         public static string Decrypt<T>(string text, string password, string salt) where T : SymmetricAlgorithm, new()
         {
-            DeriveBytes rgb = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(salt));
+            DeriveBytes rgb = new Rfc2898DeriveBytes(password, Convert.FromBase64String(salt));
             SymmetricAlgorithm algorithm = new T();
             var rgbKey = rgb.GetBytes(algorithm.KeySize >> 3);
             var rgbIV = rgb.GetBytes(algorithm.BlockSize >> 3);
             var transform = algorithm.CreateDecryptor(rgbKey, rgbIV);
-            using (var buffer = new MemoryStream(Convert.FromBase64String(text))) using (var stream = new CryptoStream(buffer, transform, CryptoStreamMode.Read)) using (var reader = new StreamReader(stream, Encoding.UTF8)) return reader.ReadToEnd();
+            using (var buffer = new MemoryStream(Convert.FromBase64String(text)))
+                using (var stream = new CryptoStream(buffer, transform, CryptoStreamMode.Read))
+                    using (var reader = new StreamReader(stream, Encoding.UTF8))
+                        return reader.ReadToEnd();
         }
 
         /// <summary>   Decrypt in memory data. </summary>
