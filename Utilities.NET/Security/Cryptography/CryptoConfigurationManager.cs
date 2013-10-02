@@ -199,6 +199,18 @@ namespace Utilities.NET.Security.Cryptography
                 }
             }
         }
+        
+        /// <summary>   Deletes the isolated storage key. </summary>
+        /// <remarks>   Sastru, 02.10.2013. </remarks>
+        public void DeleteIsolatedStorageKey()
+        {
+            using(var isoStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User | IsolatedStorageScope.Assembly, null, null))
+            {
+                var fileNames = isoStore.GetFileNames(ISOLATED_FILE_NAME);
+                if(fileNames.Any(file => file == ISOLATED_FILE_NAME))
+                    isoStore.DeleteFile(ISOLATED_FILE_NAME);
+            }
+        }
     
         /// <summary>   Indexer to get or set items within this collection using array index syntax. </summary>
         /// <param name="key">  The key. </param>
