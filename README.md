@@ -4,6 +4,7 @@ Utilities.NET
 Utility Classes and Snippet for C# .NET that i pick up or develop over time
 
 The MIT License (MIT)
+=============
 
 Copyright (c) 2013 Sander Struijk
 
