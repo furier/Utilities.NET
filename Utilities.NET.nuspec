@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Utilities.NET</id>
+        <version>1.0.0</version>
+        <title>Utilities.NET</title>
+        <authors>Sander Struijk</authors>
+        <owners>Sander Struijk</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>.NET Utilities</description>
+        <language />
+    </metadata>
+    <files>
+        <file src="Utilities.NET\bin\Debug\Utilities.NET.dll" target="lib\net45\Utilities.NET.dll" />
+        <file src="Utilities.NET.netcore451\bin\Debug\Utilities.NET.netcore451.dll" target="lib\netcore451\Utilities.NET.netcore451.dll" />
+    </files>
+</package>

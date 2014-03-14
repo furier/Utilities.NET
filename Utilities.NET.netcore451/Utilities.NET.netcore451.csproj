@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{97921330-1614-4872-8B97-858FD3892F65}</ProjectGuid>
+    <ProjectGuid>{8C2319BA-2A2B-4AFC-A99C-38564B8835A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Utilities.NET.netcore45</RootNamespace>
-    <AssemblyName>Utilities.NET.netcore45</AssemblyName>
+    <RootNamespace>Utilities.NET.netcore451</RootNamespace>
+    <AssemblyName>Utilities.NET.netcore451</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
