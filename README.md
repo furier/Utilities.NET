@@ -5,6 +5,14 @@ Utility Classes and Snippet for C# .NET that i pick up or develop over time
 
 ## CryptoConfigurationManager
 
+The `CryptoConfigurationManager` can be used directly in your code without any initialization. When the `static class` is first instantiated it tries to read a *key* in the isolated storage, if its not there it generates one and stores it in isolated storage. 
+
+That *key* is used as the *"password"* for all the encryption and decryption the `CryptoConfigurationManager` does.
+
+**Note:** `IsolatedStorageScope.User | IsolatedStorageScope.Assembly` is the scope for the isolated storage. This works fine in development as the `App.config` file gets deployed as is every time you debug the code. But in production the old `App.config` file with encrypted values will not work any more if a new assembly version is deployed. To solve this deploy a new and fresh `App.config` file with unencrypted values and everything will be fine, as `CryptoConfigurationManager` will encrypt any unencrypted values it tries to get.
+
+I have tried to change the `IsolatedStorageScope` values, but all attempts have resulted in failure, any help or pull requests are greatly appreciated.
+
 ### Get AppSettings example
 
 Example **App.config**:
