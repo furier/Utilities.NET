@@ -3,6 +3,49 @@ Utilities.NET
 
 Utility Classes and Snippet for C# .NET that i pick up or develop over time
 
+## CryptoConfigurationManager
+
+### Get AppSettings example
+
+Example **App.config**:
+
+	<appSettings>
+    	<add key="Password" value="unprotected" />
+    </appSettings>
+
+Example code:
+
+    var password = CryptoConfigurationManager.AppSettings["Password"];
+    Console.WriteLine(password); // stdOut: unprotected
+    
+Now the example **App.config** will look like this
+
+	<appSettings>
+    	<add key="Password" value="V7eyFMDnU+NGj6PoLymk5WG+XPG33mot+3J2EaL7x6o=" />
+    </appSettings>
+    
+The `CryptoConfigurationManager` will try to decrypt the string, and when it fails realize that the string is not encrypted and encrypt it before it returns the decrypted result.
+
+### Set AppSettings example
+
+Example **App.config**:
+
+	<appSettings>
+    	<add key="Password" value="" />
+    </appSettings>
+    
+Example code:
+
+	CryptoConfigurationManager.AppSettings["Password"] = "unprotected";
+    
+Now the example **App.config** will look like this
+
+	<appSettings>
+    	<add key="Password" value="V7eyFMDnU+NGj6PoLymk5WG+XPG33mot+3J2EaL7x6o=" />
+    </appSettings>
+    
+The `CryptoConfigurationManager` has now encrypted the string and put the value with the correct key in the appSettings section.
+
 The MIT License (MIT)
 =============
 
