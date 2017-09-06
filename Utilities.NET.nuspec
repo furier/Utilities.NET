@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Utilities.NET</id>
-        <version>1.0.0</version>
+        <version>1.0.0.3</version>
         <title>Utilities.NET</title>
         <authors>Sander Struijk</authors>
         <owners>Sander Struijk</owners>
@@ -11,7 +11,6 @@
         <language />
     </metadata>
     <files>
-        <file src="Utilities.NET\bin\Debug\Utilities.NET.dll" target="lib\net45\Utilities.NET.dll" />
-        <file src="Utilities.NET.netcore451\bin\Debug\Utilities.NET.netcore451.dll" target="lib\netcore451\Utilities.NET.netcore451.dll" />
+        <file src="Utilities.NET\bin\Release\Utilities.NET.dll" target="lib\net45\Utilities.NET.dll" />
     </files>
 </package>
