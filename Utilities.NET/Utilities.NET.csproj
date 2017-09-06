@@ -33,30 +33,37 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\Extensions\CollectionExt.cs" />
-    <Compile Include="Collections\Extensions\ListExt.cs" />
-    <Compile Include="Comparing\Extensions\VersionComparerExt.cs" />
-    <Compile Include="Invocation\InvokeExt.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\VersionComparerExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\InvokeExtensions.cs" />
     <Compile Include="Mail\MailUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reflection\ReflectionUtil.cs" />
-    <Compile Include="Reflection\ObjectType.cs" />
-    <Compile Include="RegexHelpers\RegexUtil.cs" />
+    <Compile Include="Helpers\ReflectionUtilities.cs" />
+    <Compile Include="Enums\ObjectType.cs" />
+    <Compile Include="Helpers\RegexUtilities.cs" />
+    <Compile Include="Security\Cryptography\AppSettings.cs" />
+    <Compile Include="Security\Cryptography\AppSettingsBase.cs" />
+    <Compile Include="Security\Cryptography\ConnectionStrings.cs" />
     <Compile Include="Security\Cryptography\CryptoConfigurationManager.cs" />
-    <Compile Include="Security\Cryptography\CryptoUtil.cs" />
-    <Compile Include="Security\SecureStringUtil.cs" />
-    <Compile Include="SimpleTypes\Strings\OtSHelper.cs" />
-    <Compile Include="Tests\UnitTestDetector.cs" />
-    <Compile Include="Comparing\VersionComparer.cs" />
+    <Compile Include="Security\Cryptography\CryptoUtilities.cs" />
+    <Compile Include="Extensions\SecureStringExtensions.cs" />
+    <Compile Include="Extensions\ExceptionExtensions.cs" />
+    <Compile Include="Extensions\ExpressionHelper.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Helpers\OtSHelper.cs" />
+    <Compile Include="Helpers\UnitTestDetector.cs" />
+    <Compile Include="Comparers\VersionComparer.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -40,11 +40,11 @@ namespace Utilities.NET.Demos.Security.Cryptography
                 Console.WriteLine("Original data: " + Encoding.ASCII.GetString(toEncrypt));
                 Console.WriteLine("Encrypting...");
                 // Encrypt the data in memory.
-                CryptoUtil.EncryptInMemoryData(toEncrypt, MemoryProtectionScope.SameLogon);
+                CryptoUtilities.EncryptInMemoryData(toEncrypt, MemoryProtectionScope.SameLogon);
                 Console.WriteLine("Encrypted data: " + Encoding.ASCII.GetString(toEncrypt));
                 Console.WriteLine("Decrypting...");
                 // Decrypt the data in memory.
-                CryptoUtil.DecryptInMemoryData(toEncrypt, MemoryProtectionScope.SameLogon);
+                CryptoUtilities.DecryptInMemoryData(toEncrypt, MemoryProtectionScope.SameLogon);
                 Console.WriteLine("Decrypted data: " + Encoding.ASCII.GetString(toEncrypt));
                 /////////////////////////////// 
                 // 
@@ -56,18 +56,18 @@ namespace Utilities.NET.Demos.Security.Cryptography
                 // Create a file.
                 var fStream = new FileStream("Data.dat", FileMode.OpenOrCreate);
                 // Create some random entropy. 
-                var entropy = CryptoUtil.CreateRandomEntropy();
+                var entropy = CryptoUtilities.CreateRandomEntropy();
                 Console.WriteLine();
                 Console.WriteLine("Original data: " + Encoding.ASCII.GetString(toEncrypt));
                 Console.WriteLine("Encrypting and writing to disk...");
                 // Encrypt a copy of the data to the stream. 
-                var bytesWritten = CryptoUtil.EncryptDataToStream(toEncrypt, entropy, DataProtectionScope.CurrentUser, fStream);
+                var bytesWritten = CryptoUtilities.EncryptDataToStream(toEncrypt, entropy, DataProtectionScope.CurrentUser, fStream);
                 fStream.Close();
                 Console.WriteLine("Reading data from disk and decrypting...");
                 // Open the file.
                 fStream = new FileStream("Data.dat", FileMode.Open);
                 // Read from the stream and decrypt the data. 
-                var decryptData = CryptoUtil.DecryptDataFromStream(entropy, DataProtectionScope.CurrentUser, fStream, bytesWritten);
+                var decryptData = CryptoUtilities.DecryptDataFromStream(entropy, DataProtectionScope.CurrentUser, fStream, bytesWritten);
                 fStream.Close();
                 Console.WriteLine("Decrypted data: " + Encoding.ASCII.GetString(decryptData));
             }
