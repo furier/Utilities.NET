@@ -86,10 +86,7 @@ namespace Utilities.NET.Extensions
         /// <typeparam name="T"> The enum type to map to. </typeparam>
         /// <param name="source"> The enum to map from. </param>
         /// <returns> The value as the new enum type. </returns>
-        public static T Map<T>(this Enum source)
-        {
-            return source.Map(MatchOn.Either, default(T), false, StringComparison.Ordinal);
-        }
+        public static T Map<T>(this Enum source) => source.Map(MatchOn.Either, default(T), false, StringComparison.Ordinal);
 
         /// <summary>
         ///     Maps an enum type to a different enum type.
@@ -101,10 +98,7 @@ namespace Utilities.NET.Extensions
         ///     when mapping fails.
         /// </param>
         /// <returns> The value as the new enum type. </returns>
-        public static T Map<T>(this Enum source, bool silent)
-        {
-            return source.Map(MatchOn.Either, default(T), silent, StringComparison.Ordinal);
-        }
+        public static T Map<T>(this Enum source, bool silent) => source.Map(MatchOn.Either, default(T), silent, StringComparison.Ordinal);
 
         /// <summary>
         ///     Maps an enum type to a different enum type.

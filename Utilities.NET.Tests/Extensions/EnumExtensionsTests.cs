@@ -52,7 +52,7 @@ namespace Utilities.NET.Tests.Extensions
         {
             Action action = () => fooEnum.Map<BarEnum>();
 
-            action.ShouldThrow<ArgumentException>();
+            action.Should().Throw<ArgumentException>();
         }
     }
 }

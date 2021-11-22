@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Utilities.NET</id>
-        <version>2.0.0.0</version>
+        <version>5.0.0.0</version>
         <title>Utilities.NET</title>
         <authors>Sander Struijk</authors>
         <owners>Sander Struijk</owners>
@@ -12,6 +12,6 @@
         <tags>.NET Utilities Extensions</tags>
     </metadata>
     <files>
-        <file src="Utilities.NET\bin\Release\Utilities.NET.dll" target="lib\net45\Utilities.NET.dll" />
+        <file src="Utilities.NET\bin\Release\netstandard2.1\Utilities.NET.dll" target="lib\netstandard2.1\Utilities.NET.dll" />
     </files>
 </package>

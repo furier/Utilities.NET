@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using FluentAssertions;
 using NUnit.Framework;
-using Ploeh.AutoFixture.NUnit3;
+using AutoFixture.NUnit3;
 using Utilities.NET.Extensions;
 
 namespace Utilities.NET.Tests.Extensions
