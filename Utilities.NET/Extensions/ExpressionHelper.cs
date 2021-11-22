@@ -14,9 +14,7 @@ namespace Utilities.NET.Extensions
         /// </typeparam>
         /// <param name="property"> The property to get the <see cref="MemberExpression"/> of. </param>
         /// <returns> The <see cref="MemberExpression"/> of the <paramref name="property"/>. </returns>
-        public static MemberExpression GetMemberExpression<T>(Expression<Func<T, object>> property)
-        {
-            return property.Body as MemberExpression ?? ((UnaryExpression) property.Body).Operand as MemberExpression;
-        }
+        public static MemberExpression GetMemberExpression<T>(Expression<Func<T, object>> property) => 
+            property.Body as MemberExpression ?? ((UnaryExpression) property.Body).Operand as MemberExpression;
     }
 }

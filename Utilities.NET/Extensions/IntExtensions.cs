@@ -18,10 +18,7 @@ namespace Utilities.NET.Extensions
         /// <returns>
         ///     The passed in <paramref name="source"/> converted to an enum value of enum type: <typeparamref name="T"/>
         /// </returns>
-        public static T ToEnum<T>(this int source)
-        {
-            return source.ToEnum(default(T), false);
-        }
+        public static T ToEnum<T>(this int source) => source.ToEnum(default(T), false);
 
         /// <summary>
         ///     Converts an int to an enum value of passed in enum type: <typeparamref name="T"/>.
@@ -40,10 +37,7 @@ namespace Utilities.NET.Extensions
         /// <returns>
         ///     The passed in <paramref name="source"/> converted to an enum value of enum type: <typeparamref name="T"/>
         /// </returns>
-        public static T ToEnum<T>(this int source, bool silent)
-        {
-            return source.ToEnum(default(T), silent);
-        }
+        public static T ToEnum<T>(this int source, bool silent) => source.ToEnum(default(T), silent);
 
         /// <summary>
         ///     Converts an int to an enum value of passed in enum type: <typeparamref name="T"/>.
@@ -60,10 +54,7 @@ namespace Utilities.NET.Extensions
         /// <returns>
         ///     The passed in <paramref name="source"/> converted to an enum value of enum type: <typeparamref name="T"/>
         /// </returns>
-        public static T ToEnum<T>(this int source, T @default)
-        {
-            return source.ToEnum(@default, false);
-        }
+        public static T ToEnum<T>(this int source, T @default) => source.ToEnum(@default, false);
 
         /// <summary>
         ///     Converts an int to an enum value of passed in enum type: <typeparamref name="T"/>.
@@ -86,10 +77,7 @@ namespace Utilities.NET.Extensions
         /// <returns>
         ///     The passed in <paramref name="source"/> converted to an enum value of enum type: <typeparamref name="T"/>
         /// </returns>
-        public static T ToEnum<T>(this int source, T @default, bool silent)
-        {
-            return (T) source.ToEnum(typeof(T), @default, silent);
-        }
+        public static T ToEnum<T>(this int source, T @default, bool silent) => (T) source.ToEnum(typeof(T), @default, silent);
 
         /// <summary>
         ///     Converts a string to an enum value of passed in enum <paramref name="type"/>.

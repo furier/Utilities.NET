@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using AutoFixture;
 using FluentAssertions;
 using NUnit.Framework;
-using Ploeh.AutoFixture;
 using Utilities.NET.Extensions;
 
 namespace Utilities.NET.Tests.Extensions

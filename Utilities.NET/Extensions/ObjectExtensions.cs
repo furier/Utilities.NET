@@ -111,10 +111,7 @@ namespace Utilities.NET.Extensions
         ///     Returns the parameter <paramref name="value"/> as type <typeparamref name="T"/>, however if parameter
         ///     <paramref name="value"/> is null, default(<typeparamref name="T"/>) is returned.
         /// </returns>
-        public static T ChangeType<T>(this object value)
-        {
-            return (T) ChangeType(value, typeof(T), default(T));
-        }
+        public static T ChangeType<T>(this object value) => (T) ChangeType(value, typeof(T), default(T));
 
         /// <summary>
         ///     Changes the type of the parameter <paramref name="value"/> to type <typeparamref name="T"/> and returns the value
@@ -127,10 +124,7 @@ namespace Utilities.NET.Extensions
         ///     Returns the parameter <paramref name="value"/> as type <typeparamref name="T"/>, however if parameter
         ///     <paramref name="value"/> is null, <paramref name="defaultValue"/> is returned.
         /// </returns>
-        public static T ChangeType<T>(this object value, T defaultValue)
-        {
-            return (T) ChangeType(value, typeof(T), defaultValue);
-        }
+        public static T ChangeType<T>(this object value, T defaultValue) => (T) ChangeType(value, typeof(T), defaultValue);
 
         /// <summary>
         ///     Changes the type of the parameter <paramref name="value"/> to the type declared by <paramref name="type"/> and
@@ -141,10 +135,7 @@ namespace Utilities.NET.Extensions
         /// <returns>
         ///     Returns the parameter <paramref name="value"/> as the type declared by <paramref name="type"/>.
         /// </returns>
-        public static object ChangeType(this object value, Type type)
-        {
-            return ChangeType(value, type, type.GetDefaultValue());
-        }
+        public static object ChangeType(this object value, Type type) => ChangeType(value, type, type.GetDefaultValue());
 
         /// <summary>
         ///     Changes the type of the parameter <paramref name="value"/> to the type declared by <paramref name="type"/> and
